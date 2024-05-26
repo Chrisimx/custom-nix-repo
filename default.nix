@@ -8,7 +8,8 @@
 
 { pkgs ? import <nixpkgs> { } }:
 
-{
+# Define vosk first
+rec {
   # The `lib`, `modules`, and `overlays` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
@@ -16,6 +17,7 @@
 
   # example-package = pkgs.callPackage ./pkgs/example-package { };
   vosk = pkgs.callPackage ./pkgs/vosk { };
+  numen = pkgs.callPackage ./pkgs/numen { inherit vosk; };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
