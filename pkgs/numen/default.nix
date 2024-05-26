@@ -1,4 +1,5 @@
-{ lib
+{ stdenv
+, lib
 , buildGoModule
 , fetchFromSourcehut
 , dotool
@@ -15,6 +16,7 @@ buildGoModule rec {
     hash = "sha256-ia01lOP59RdoiO23b5Dv5/fX5CEI43tPHjmaKwxP+OM=";
   };
   buildInputs = [
+     stdenv.cc.cc.lib
      dotool
      vosk
   ];
